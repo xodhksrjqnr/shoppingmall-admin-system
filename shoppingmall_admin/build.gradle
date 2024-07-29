@@ -26,6 +26,9 @@ dependencies {
 	//Swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
 
+	//Spring security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
