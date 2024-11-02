@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <title>관리자페이지</title>
+  <link rel="stylesheet" href="/static/css/default.css" />
+  <link rel="stylesheet" href="/static/css/common.css" />
+  <link th:if="${css != null}" rel="stylesheet" th:href="${'/static/css' + css + '.css'}" />
+  <script src="/static/js/common.js"></script>
+</head>
+
+</html>

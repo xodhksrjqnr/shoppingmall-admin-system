@@ -1,0 +1,5 @@
+/* input.html */
+article > div { display: inline-block; width: 19%; border: 1px solid gray; vertical-align: top; }
+article > div > ul > li.selected { background-color: gray; }
+article > div > button { display: none; }
+article > div > button.selected { display: block; }

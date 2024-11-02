@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <div th:replace="~{/layout/head :: head}"></div>
+    <div th:replace="~{/layout/header :: header}"></div>
+    <body>
+        <div th:replace="~{/layout/menu :: menu}"></div>
+        <section>
+            <article>
+                <div>
+                    <ul id="element_A"></ul>
+                    <button class="selected" id="button_A" type="button" value="0">+</button>
+                </div>
+                <div>
+                    <ul id="element_B"></ul>
+                    <button id="button_B" type="button" value="">+</button>
+                </div>
+                <div>
+                    <ul id="element_C"></ul>
+                    <button id="button_C" type="button" value="">+</button>
+                </div>
+                <div>
+                    <ul id="element_D"></ul>
+                    <button id="button_D" type="button" value="">+</button>
+                </div>
+                <div>
+                    <ul id="element_E"></ul>
+                    <button id="button_E" type="button" value="">+</button>
+                </div>
+            </article>
+            <article>
+                <form id="form">
+                    <label for="group_index">Group</label>
+                    <input id="group_index" name="groupIndex" value="">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" value="">
+                    <label for="parent_id">Parent</label>
+                    <input id="parent_id" name="parentId" value="">
+                    <button type="button">등록하기</button>
+                </form>
+            </article>
+        </section>
+    </body>
+    <div th:replace="~{/layout/footer :: footer}"></div>
+</html>
