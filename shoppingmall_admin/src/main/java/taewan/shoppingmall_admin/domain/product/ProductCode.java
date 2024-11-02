@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
 @Table(name = "product_elements")
-public class ProductElement {
+public class ProductCode {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,8 +22,8 @@ public class ProductElement {
     @CreatedDate
     private LocalDateTime createDate;
 
-    public static ProductElement create(int parentId, String name, Character groupIndex) {
-        return ProductElement.builder()
+    public static ProductCode create(int parentId, String name, Character groupIndex) {
+        return ProductCode.builder()
                 .parentId(parentId)
                 .name(name)
                 .groupIndex(groupIndex)

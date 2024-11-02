@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class RequestAddProductElementDto {
+public class RequestAddProductCodeDto {
 
     private int parentId;
     private String name;

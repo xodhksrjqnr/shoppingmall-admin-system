@@ -13,12 +13,12 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ProductElementServiceImpl implements ProductElementService {
+public class ProductCodeServiceImpl implements ProductCodeService {
 
-    private final ProductElementRepository productElementRepository;
+    private final ProductCodeRepository productElementRepository;
 
-    public Map<Character, List<ProductElementInfoDto>> searchAll() {
-        Map<Character, List<ProductElementInfoDto>> productElementList = new LinkedHashMap<>(Map.of(
+    public Map<Character, List<ProductCodeInfoDto>> searchAll() {
+        Map<Character, List<ProductCodeInfoDto>> productElementList = new LinkedHashMap<>(Map.of(
                 'E', new LinkedList<>(),
                 'D', new LinkedList<>(),
                 'C', new LinkedList<>(),
@@ -37,8 +37,8 @@ public class ProductElementServiceImpl implements ProductElementService {
     }
 
     @Override
-    public List<ProductElementInfoDto> searchOneGroup(int parentId) {
-        List<ProductElementInfoDto> productElementInfoDtos = new LinkedList<>();
+    public List<ProductCodeInfoDto> searchOneGroup(int parentId) {
+        List<ProductCodeInfoDto> productElementInfoDtos = new LinkedList<>();
 
         productElementRepository.findAllByParentId(parentId)
                 .forEach(productElement ->
@@ -48,7 +48,7 @@ public class ProductElementServiceImpl implements ProductElementService {
     }
 
     @Override
-    public void addOne(RequestAddProductElementDto dto) {
+    public void addOne(RequestAddProductCodeDto dto) {
         productElementRepository.save(Convertor.toEntity(dto));
     }
 

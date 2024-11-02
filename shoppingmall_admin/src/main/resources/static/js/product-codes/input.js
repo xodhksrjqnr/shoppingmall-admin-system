@@ -1,4 +1,4 @@
-const url = "/api/products/elements/sub?parentId=";
+const url = "/api/product-codes/sub?parentId=";
 const groupIndexArray = ['A', 'B', 'C', 'D', 'E', 'F'];
 let selectedGroupIndex = 'A';
 
@@ -23,7 +23,7 @@ EventListener.addListeners('article > div > button', function (evt) {
 EventListener.addTheListener('form > button', function (evt) {
     let form = evt.target.parentElement;
 
-    fetch('/api/products/elements', {
+    fetch('/api/products-codes', {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

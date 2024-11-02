@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class ProductElementInfoDto {
+public class ProductCodeInfoDto {
 
     private int id;
     private int parentId;

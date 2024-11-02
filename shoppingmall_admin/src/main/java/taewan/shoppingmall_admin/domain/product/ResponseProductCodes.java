@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
-public class ResponseProductElements {
+public class ResponseProductCodes {
 
-    private Map<Character, List<ProductElementInfoDto>> groupList;
+    private Map<Character, List<ProductCodeInfoDto>> groupList;
 
-    public ResponseProductElements(Map<Character, List<ProductElementInfoDto>> groupList) {
+    public ResponseProductCodes(Map<Character, List<ProductCodeInfoDto>> groupList) {
         this.groupList = groupList;
     }
 
-    public ResponseProductElements(List<ProductElementInfoDto> theGroup) {
+    public ResponseProductCodes(List<ProductCodeInfoDto> theGroup) {
         if (theGroup.isEmpty()) {
             groupList = new HashMap<>();
             return;
