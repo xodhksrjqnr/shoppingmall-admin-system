@@ -13,9 +13,8 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ProductServiceImpl implements ProductService {
+public class ProductElementServiceImpl implements ProductElementService {
 
-    private final ProductRepository productRepository;
     private final ProductElementRepository productElementRepository;
 
     public Map<Character, List<ProductElementInfoDto>> searchAll() {

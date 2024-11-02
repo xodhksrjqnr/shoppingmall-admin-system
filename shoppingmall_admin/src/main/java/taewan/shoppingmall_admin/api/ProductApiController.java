@@ -2,7 +2,7 @@ package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.domain.product.ProductService;
+import taewan.shoppingmall_admin.domain.product.ProductElementService;
 import taewan.shoppingmall_admin.domain.product.RequestAddProductElementDto;
 import taewan.shoppingmall_admin.domain.product.ResponseProductElements;
 
@@ -11,7 +11,7 @@ import taewan.shoppingmall_admin.domain.product.ResponseProductElements;
 @RequestMapping("/api/products")
 public class ProductApiController {
 
-    private final ProductService productService;
+    private final ProductElementService productService;
 
     @GetMapping("/elements/all")
     public ResponseProductElements allGroupOfProductElements() {
