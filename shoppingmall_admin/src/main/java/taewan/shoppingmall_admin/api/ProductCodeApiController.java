@@ -2,9 +2,9 @@ package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.domain.product.ProductCodeService;
-import taewan.shoppingmall_admin.domain.product.RequestAddProductCodeDto;
-import taewan.shoppingmall_admin.domain.product.ResponseProductCodes;
+import taewan.shoppingmall_admin.domain.product_code.ProductCodeService;
+import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.domain.product_code.ResponseProductCodes;
 
 @RestController
 @RequiredArgsConstructor

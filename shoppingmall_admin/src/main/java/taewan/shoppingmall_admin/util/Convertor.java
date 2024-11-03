@@ -3,6 +3,9 @@ package taewan.shoppingmall_admin.util;
 import taewan.shoppingmall_admin.domain.menu.CategoryDto;
 import taewan.shoppingmall_admin.domain.menu.Menu;
 import taewan.shoppingmall_admin.domain.product.*;
+import taewan.shoppingmall_admin.domain.product_code.ProductCode;
+import taewan.shoppingmall_admin.domain.product_code.ProductCodeInfoDto;
+import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
 
 public class Convertor {
 

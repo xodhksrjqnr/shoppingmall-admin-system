@@ -1,4 +1,4 @@
-package taewan.shoppingmall_admin.domain.product;
+package taewan.shoppingmall_admin.domain.product_code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

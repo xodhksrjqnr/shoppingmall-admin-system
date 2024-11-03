@@ -1,4 +1,7 @@
-package taewan.shoppingmall_admin.domain.product;
+package taewan.shoppingmall_admin.domain.product_code;
+
+import taewan.shoppingmall_admin.domain.product_code.ProductCodeInfoDto;
+import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
 
 import java.util.List;
 import java.util.Map;

@@ -1,6 +1,7 @@
-package taewan.shoppingmall_admin.domain.product;
+package taewan.shoppingmall_admin.domain.product_code;
 
 import lombok.Getter;
+import taewan.shoppingmall_admin.domain.product_code.ProductCodeInfoDto;
 
 import java.util.HashMap;
 import java.util.List;
