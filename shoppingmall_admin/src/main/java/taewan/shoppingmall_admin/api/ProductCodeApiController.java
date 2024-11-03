@@ -14,17 +14,17 @@ public class ProductCodeApiController {
     private final ProductCodeService productService;
 
     @GetMapping("/all")
-    public ResponseProductCodes allGroupOfProductElements() {
+    public ResponseProductCodes allGroupOfProductCodes() {
         return new ResponseProductCodes(productService.searchAll());
     }
 
     @GetMapping("/sub")
-    public ResponseProductCodes oneGroupOfProductElements(@RequestParam Integer parentId) {
+    public ResponseProductCodes oneGroupOfProductCodes(@RequestParam Integer parentId) {
         return new ResponseProductCodes(productService.searchOneGroup(parentId));
     }
 
     @PostMapping
-    public void addProductElement(@RequestBody RequestAddProductCodeDto addDto) {
+    public void addProductCode(@RequestBody RequestAddProductCodeDto addDto) {
         productService.addOne(addDto);
     }
 

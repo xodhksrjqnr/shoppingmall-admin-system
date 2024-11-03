@@ -21,8 +21,8 @@ public class ResponseProductCodes {
             return;
         }
 
-        this.groupList = new HashMap<>(Map.of(
-                (char)(theGroup.get(0).getGroupIndex()), theGroup
-        ));
+        this.groupList = new HashMap<>(
+                Map.of(theGroup.get(0).getGroupIndex(), theGroup)
+        );
     }
 }
