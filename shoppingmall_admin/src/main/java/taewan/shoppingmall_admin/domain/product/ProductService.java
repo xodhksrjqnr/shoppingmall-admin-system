@@ -5,5 +5,6 @@ import java.util.List;
 public interface ProductService {
 
     List<ProductInfoDto> searchAllWithFilter();
+    void addOne(RequestAddProductDto dto);
 
 }

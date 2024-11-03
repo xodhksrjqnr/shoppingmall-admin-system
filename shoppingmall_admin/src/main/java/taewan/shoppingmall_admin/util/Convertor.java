@@ -2,9 +2,7 @@ package taewan.shoppingmall_admin.util;
 
 import taewan.shoppingmall_admin.domain.menu.CategoryDto;
 import taewan.shoppingmall_admin.domain.menu.Menu;
-import taewan.shoppingmall_admin.domain.product.ProductCode;
-import taewan.shoppingmall_admin.domain.product.ProductCodeInfoDto;
-import taewan.shoppingmall_admin.domain.product.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.domain.product.*;
 
 public class Convertor {
 
@@ -26,6 +24,19 @@ public class Convertor {
 
     public static ProductCode toEntity(RequestAddProductCodeDto dto) {
         return ProductCode.create(dto.getParentId(), dto.getName(), dto.getGroupIndex());
+    }
+
+    public static Product toEntity(RequestAddProductDto dto) {
+        return Product.create(
+                dto.getName(),
+                dto.getNameEng(),
+                dto.getCode(),
+                dto.getSellingPrice(),
+                dto.getCostPrice(),
+                dto.getStock(),
+                dto.getBrand(),
+                dto.getPlaceOfOrigin()
+        );
     }
 
 }
