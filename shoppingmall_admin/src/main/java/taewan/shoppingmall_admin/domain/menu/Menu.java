@@ -8,7 +8,6 @@ import org.hibernate.annotations.DynamicUpdate;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "Menus")
 @DynamicUpdate
 @Entity
 public class Menu {
