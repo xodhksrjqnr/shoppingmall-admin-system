@@ -30,3 +30,7 @@ menu {
 section {
     margin: 10% 0 0 20%;
 }
+
+section > * {
+    margin : 1%;
+}

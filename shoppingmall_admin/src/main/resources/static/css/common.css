@@ -1,3 +1,15 @@
 .no-style {
     list-style-type: none;
 }
+
+table { width: 100%; border-collapse: collapse; }
+table tr > th,td { border: 1px solid black; }
+table th { width: 20%; background-color: #a6d9e3; }
+table td { width: 80%; }
+
+.button-group { text-align: center; }
+.button-group button { margin: 1%; }
+
+.button-insert { background-color: #0aaecf; }
+.button-add { background-color: #a6d9e3; }
+.button-back {  }
