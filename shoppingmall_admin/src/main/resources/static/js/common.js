@@ -80,76 +80,6 @@ class Load {
     }
 }
 
-class Element {
-
-    static setValueById(id, value) {
-        this.getById(id).value = value;
-    }
-
-    static clearTextContentById(id) {
-        this.setTextContentById(id, '');
-    }
-
-    static clearFirstTextContent(target) {
-        this.setFirstTextContent(target, '');
-    }
-
-    static setTextContentById(id, value) {
-        this.getById(id).textContent = value;
-    }
-
-    static setFirstTextContent(target, value) {
-        this.getFirst(target).textContent = value;
-    }
-
-    static getById(id) {
-        return document.getElementById(id);
-    }
-
-    static getFirst(target) {
-        return document.querySelector(target);
-    }
-
-    static getAll(target) {
-        return document.querySelectorAll(target);
-    }
-
-    static addClassById(id, value) {
-        this.addClass(this.getById(id), value);
-    }
-
-    static addClass(element, value) {
-        element.classList.add(value);
-    }
-
-    static removeClassById(id, value) {
-        this.removeClass(this.getById(id), value);
-    }
-
-    static removeClass(element, value) {
-        element.classList.remove(value);
-    }
-
-    static create(tagName) {
-        return document.createElement(tagName);
-    }
-
-    static createScript(src) {
-        const elem = this.create('script');
-
-        elem.src = src;
-        return elem;
-    }
-
-    static createLink(rel, href) {
-        const elem = this.create('link');
-
-        elem.rel = rel;
-        elem.href = href;
-        return elem;
-    }
-}
-
 class EventListener {
 
     static addTheListener(target, func) {
@@ -159,4 +89,61 @@ class EventListener {
     static addListeners(target, func) {
         Element.getAll(target).forEach(elem => elem.addEventListener('click', (evt) => func(evt)));
     }
+}
+
+class Form {
+
+    /**
+     * @param filterArrayData
+     * @param targetId
+     * type : Map
+     * input example :
+     * [
+     *      {
+     *          tag : value (required)
+     *          elements : values (required)
+     *          attributes : {
+     *              type : type,
+     *              name : name,
+     *              id : id,
+     *              value : value,
+     *              ...
+     *          }
+     *          size : value
+     *      }
+     * ]
+     */
+    static createForm(json) {
+        const table = Element.create('table');
+
+        json.objects.forEach(elem => {
+            const tr = Element.create('tr');
+            const td = Element.create('td');
+            const th = Element.create('th');
+
+            th.innerText = elem.title;
+            switch (elem.tag) {
+                case 'checkbox':
+                    td.appendChild(Element.createTypeInput(elem.attributes, elem.elements));
+                    break;
+                case 'radio':
+                    td.appendChild(Element.createTypeInput(elem.attributes, elem.elements));
+                    break;
+                case 'input':
+                    td.appendChild(Element.createInput(elem.attributes));
+                    break;
+                case 'select':
+                    td.appendChild(Element.createSelect(elem.attributes, elem.elements));
+                    break;
+                default:
+                    break;
+            }
+            tr.appendChild(th);
+            tr.appendChild(td);
+            table.appendChild(tr);
+        })
+
+        return table;
+    }
+
 }
