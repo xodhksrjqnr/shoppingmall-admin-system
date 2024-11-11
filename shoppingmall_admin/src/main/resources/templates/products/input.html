@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+  <div th:replace="~{/layout/head :: head}"></div>
+  <body>
+    <div th:replace="~{/layout/header :: header}"></div>
+    <div th:replace="~{/layout/menu :: menu}"></div>
+    <section>
+      <form id="input-form" method="post" action="/api/products"></form>
+      <div class="button-group">
+        <button type="submit" class="button-insert">등록하기</button>
+        <button type="button" class="button-back" onclick="history.back()">돌아가기</button>
+      </div>
+    </section>
+    <div th:replace="~{/layout/footer :: footer}"></div>
+  </body>
+</html>
