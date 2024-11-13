@@ -7,10 +7,21 @@
     <section>
       <form id="input-form" method="post" action="/api/products"></form>
       <div class="button-group">
-        <button type="submit" class="button-insert">등록하기</button>
+        <button id="input-form-button" type="submit" class="button-insert">등록하기</button>
         <button type="button" class="button-back" onclick="history.back()">돌아가기</button>
       </div>
     </section>
     <div th:replace="~{/layout/footer :: footer}"></div>
   </body>
+  <script src="/static/js/products/json.js"></script>
+  <script>
+    const form = new Form(Element.getById('input-form'));
+
+    form.addTableForm(inputJson);
+    EventListener.addTheListener('#input-form-button', submit);
+
+    function submit(evt) {
+      form.submitInJson();
+    }
+  </script>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
   <div th:replace="~{/layout/head :: head}"></div>
-  <div th:replace="~{/layout/header :: header}"></div>
   <body>
+    <div th:replace="~{/layout/header :: header}"></div>
     <div th:replace="~{/layout/menu :: menu}"></div>
     <section>
       <form id="search-form"></form>
@@ -10,6 +10,12 @@
         <button class="button-add" onclick="location.href='/page/products/input'">추가하기</button>
       </div>
     </section>
+    <div th:replace="~{/layout/footer :: footer}"></div>
   </body>
-  <div th:replace="~{/layout/footer :: footer}"></div>
+  <script src="/static/js/products/json.js"></script>
+  <script>
+    const form = new Form(Element.getById('search-form'));
+
+    form.addTableForm(listJson);
+  </script>
 </html>

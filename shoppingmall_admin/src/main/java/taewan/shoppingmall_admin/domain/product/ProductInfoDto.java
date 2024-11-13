@@ -11,8 +11,8 @@ public class ProductInfoDto {
     private final String name;
     private final String nameEng;
     private final String code;
-    private final Integer sellingPrice;
-    private final Integer costPrice;
+    private final String sellingPrice;
+    private final String costPrice;
     private final Integer stock;
     private final String brand;
     private final String placeOfOrigin;

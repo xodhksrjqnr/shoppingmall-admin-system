@@ -21,15 +21,15 @@ public class Product {
     private String name;
     private String nameEng;
     private String code;
-    private Integer sellingPrice;
-    private Integer costPrice;
+    private String sellingPrice;
+    private String costPrice;
     private Integer stock;
     private String brand;
     private String placeOfOrigin;
     @CreatedDate
     private LocalDateTime createdDate;
 
-    public static Product create(String name, String nameEng, String code, Integer sellingPrice, Integer costPrice, Integer stock, String brand, String placeOfOrigin) {
+    public static Product create(String name, String nameEng, String code, String sellingPrice, String costPrice, Integer stock, String brand, String placeOfOrigin) {
         return Product.builder()
                 .name(name)
                 .nameEng(nameEng)
