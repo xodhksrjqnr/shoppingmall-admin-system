@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import taewan.shoppingmall_admin.util.Convertor;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,13 +16,10 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public List<ProductInfoDto> searchAllWithFilter() {
-        List<ProductInfoDto> dtos = new LinkedList<>();
-
-        productRepository.findAllByConditions()
-                .forEach(product -> dtos.add(new ProductInfoDto(product)));
-
-        return dtos;
+    public List<ProductInfoDto> searchAllWithFilter(RequestSearchProductDto dto) {
+        return productRepository.findAllByConditions(dto.makeWhere())
+                        .stream().map(ProductInfoDto::new)
+                        .collect(Collectors.toList());
     }
 
     @Override
