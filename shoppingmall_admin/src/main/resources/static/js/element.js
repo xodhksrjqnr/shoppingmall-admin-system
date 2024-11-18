@@ -90,6 +90,7 @@ class Element {
             const label = this.create('label', { for : elem });
 
             label.innerText = elem;
+            attributes['value'] = elem;
             div.appendChild(this.create('input', attributes));
             div.appendChild(label);
         });
