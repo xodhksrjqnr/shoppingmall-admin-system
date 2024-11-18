@@ -10,6 +10,14 @@ function isEmpty(obj) {
     return (obj === undefined || obj === null || obj.length === 0);
 }
 
+function redirect(url) {
+    location.href = url;
+}
+
+function reload(url) {
+    window.location.reload();
+}
+
 class LinkInfo {
     static #link = new Map([
         ['tagName', new Map([['js', 'script'], ['css', 'link']])],
@@ -93,6 +101,10 @@ class EventListener {
 
 class Form {
 
+    constructor(form) {
+        this.form = form;
+    }
+
     /**
      * @param filterArrayData
      * @param targetId
@@ -113,7 +125,7 @@ class Form {
      *      }
      * ]
      */
-    static createForm(json) {
+    addTableForm(json) {
         const table = Element.create('table');
 
         json.objects.forEach(elem => {
@@ -143,7 +155,76 @@ class Form {
             table.appendChild(tr);
         })
 
-        return table;
+        this.form.prepend(table);
+    }
+
+    getQueryParameters() {
+        let queryParameter = '';
+
+        Array.from(this.form.getElementsByTagName('input')).forEach(param => {
+            switch (param.type) {
+                case 'checkbox' || 'radio':
+                    if (param.checked) {
+                        queryParameter += param.name + '=' + param.value + '&';
+                    }
+                    break;
+                default:
+                    if (isNotEmpty(param.value)) {
+                        queryParameter += param.name + '=' + param.value + '&';
+                    }
+                    break;
+            }
+        });
+
+        return queryParameter.length > 1 ? '?' + queryParameter : '';
+    }
+
+    submitInJson() {
+        let object = {};
+        new FormData(this.form).forEach((value, key) => object[key] = value);
+
+        Data.postJson(this.form, object);
+    }
+
+}
+
+class Data {
+
+    static getJson(url, func) {
+        fetch(url, {
+            method: "GET",
+            headers: {'Accept': 'application/json'},
+        })
+            .then(rep => rep.json())
+            .then(data => func(data))
+            .catch(err => alert('데이터 조회에 실패하였습니다.'))
+    }
+
+    static async postJson(form, object) {
+        await fetch(form.action, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(object)
+        })
+            .then(rep => {  })
+            .catch(err => { alert('데이터 등록에 실패하였습니다.') })
+    }
+
+}
+
+class TUI {
+
+    #instance;
+    resetData = (newData) => this.#instance.resetData(newData);
+
+    constructor(gridId, columns) {
+        this.#instance = new tui.Grid({
+            el: document.getElementById(gridId),
+            columns: columns,
+            data: []
+        });
+
+        tui.Grid.applyTheme('striped');
     }
 
 }

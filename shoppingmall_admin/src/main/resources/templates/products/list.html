@@ -7,15 +7,23 @@
     <section>
       <form id="search-form"></form>
       <div class="button-group">
+        <button class="button-add" onclick="load()">검색하기</button>
         <button class="button-add" onclick="location.href='/page/products/input'">추가하기</button>
       </div>
+      <div id="grid"></div>
     </section>
     <div th:replace="~{/layout/footer :: footer}"></div>
   </body>
   <script src="/static/js/products/json.js"></script>
   <script>
     const form = new Form(Element.getById('search-form'));
+    const grid = new TUI('grid', listTUIJson);
 
     form.addTableForm(listJson);
+    load();
+
+    function load() {
+      Data.getJson("/api/products/all" + form.getQueryParameters(), grid.resetData);
+    }
   </script>
 </html>

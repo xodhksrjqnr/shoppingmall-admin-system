@@ -1,16 +1,13 @@
 package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import taewan.shoppingmall_admin.domain.product.ProductInfoDto;
 import taewan.shoppingmall_admin.domain.product.ProductService;
 import taewan.shoppingmall_admin.domain.product.RequestAddProductDto;
+import taewan.shoppingmall_admin.domain.product.RequestSearchProductDto;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,12 +17,12 @@ public class ProductApiController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public Map<String, List<ProductInfoDto>> allOfProducts() {
-        return Map.of("Products", productService.searchAllWithFilter());
+    public List<ProductInfoDto> allOfProducts(@ModelAttribute RequestSearchProductDto dto) {
+        return productService.searchAllWithFilter(dto);
     }
 
     @PostMapping
-    public void addProduct(RequestAddProductDto dto) {
+    public void addProduct(@RequestBody RequestAddProductDto dto) {
         productService.addOne(dto);
     }
 

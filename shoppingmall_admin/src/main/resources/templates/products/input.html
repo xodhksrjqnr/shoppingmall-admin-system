@@ -21,7 +21,10 @@
     EventListener.addTheListener('#input-form-button', submit);
 
     function submit(evt) {
-      form.submitInJson();
+      if (form.submitInJson()) {
+        alert('새로운 기초상품 등록이 완료되었습니다.');
+        redirect('/page/products/list');
+      }
     }
   </script>
 </html>

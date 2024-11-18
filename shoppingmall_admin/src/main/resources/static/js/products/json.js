@@ -65,6 +65,7 @@ const listJson = {
             title : '기초상품명(한글/영문)',
             tag : 'input',
             elements : [],
+            values : [],
             attributes : {
                 name : 'name'
             }
@@ -73,6 +74,7 @@ const listJson = {
             title : '기초상품코드',
             tag : 'input',
             elements : [],
+            values : [],
             attributes : {
                 name : 'code'
             }
@@ -103,3 +105,46 @@ const listJson = {
         // }
     ]
 };
+
+const listTUIJson = [
+    {
+        header: 'Id',
+        name: 'id'
+    },
+    {
+        header: 'Name',
+        name: 'name'
+    },
+    {
+        header: 'NameEng',
+        name: 'nameEng'
+    },
+    {
+        header: 'Code',
+        name: 'code'
+    },
+    {
+        header: 'SellingPrice',
+        name: 'sellingPrice'
+    },
+    {
+        header: 'CostPrice',
+        name: 'costPrice'
+    },
+    {
+        header: 'Stock',
+        name: 'stock'
+    },
+    {
+        header: 'Brand',
+        name: 'brand'
+    },
+    {
+        header: 'PlaceOfOrigin',
+        name: 'placeOfOrigin'
+    },
+    {
+        header: 'CreatedDate',
+        name: 'createdDate'
+    }
+]
