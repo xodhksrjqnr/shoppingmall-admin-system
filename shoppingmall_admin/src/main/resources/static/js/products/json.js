@@ -81,11 +81,10 @@ const listJson = {
         },
         {
             title : '기초상품 브랜드',
-            tag : 'checkbox',
-            elements : ['brand1','brand2','brand3','brand4','brand5'],
+            tag : 'select',
+            elements : ['', 'brand1','brand2','brand3','brand4','brand5'],
             attributes : {
                 name : 'brand',
-                type : 'checkbox'
             }
         },
         // {

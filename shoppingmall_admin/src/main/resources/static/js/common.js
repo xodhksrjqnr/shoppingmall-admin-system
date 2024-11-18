@@ -161,18 +161,9 @@ class Form {
     getQueryParameters() {
         let queryParameter = '';
 
-        Array.from(this.form.getElementsByTagName('input')).forEach(param => {
-            switch (param.type) {
-                case 'checkbox' || 'radio':
-                    if (param.checked) {
-                        queryParameter += param.name + '=' + param.value + '&';
-                    }
-                    break;
-                default:
-                    if (isNotEmpty(param.value)) {
-                        queryParameter += param.name + '=' + param.value + '&';
-                    }
-                    break;
+        new FormData(this.form).forEach((value, key) => {
+            if (isNotEmpty(value)) {
+                queryParameter += key + '=' + value + '&';
             }
         });
 
