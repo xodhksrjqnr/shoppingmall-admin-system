@@ -5,9 +5,9 @@
     <div th:replace="~{/layout/header :: header}"></div>
     <div th:replace="~{/layout/menu :: menu}"></div>
     <section>
-      <form id="input-form" method="post" action="/api/products"></form>
+      <form id="form" method="post" action="/api/products"></form>
       <div class="button-group">
-        <button id="input-form-button" type="submit" class="button-insert">등록하기</button>
+        <button id="form-button" type="submit" class="button-insert">등록하기</button>
         <button type="button" class="button-back" onclick="history.back()">돌아가기</button>
       </div>
     </section>
@@ -15,16 +15,39 @@
   </body>
   <script src="/static/js/products/json.js"></script>
   <script>
-    const form = new Form(Element.getById('input-form'));
+    const form2 = new Form(document.getElementById('form'));
 
-    form.addTableForm(inputJson);
-    EventListener.addTheListener('#input-form-button', submit);
+    Data.getJson("/api/product-codes/unassigned", initData);
+    form2.addTableForm(inputJson);
+    // EventListener.addTheListener('#form-button', submit);
 
-    function submit(evt) {
-      if (form.submitInJson()) {
-        alert('새로운 기초상품 등록이 완료되었습니다.');
-        redirect('/page/products/list');
-      }
+    // function submit() {
+    //   if (form.submitInJson()) {
+    //     alert('새로운 기초상품 등록이 완료되었습니다.');
+    //     redirect('/page/products/list');
+    //   }
+    // }
+
+    function initData(data) {
+      const target = document.getElementById('code');
+      data.forEach(d => target.append(ElementTW.create({tag:'option', text:d, attributes: {value: d}}).toElement()));
     }
+
+    document.getElementById('form-button').addEventListener('click', (evt) => {
+      Data.postJson(
+        this.form,
+        {
+          name: this.form.name.value,
+          nameEng: this.form.nameEng.value,
+          code: this.form.code.value,
+          sellingPrice: this.form.sellingPrice.value,
+          costPrice: this.form.costPrice.value,
+          stock: this.form.stock.value,
+          brand: this.form.brand.value,
+          placeOfOrigin: this.form.placeOfOrigin.value
+        },
+        () => location.reload()
+      );
+    });
   </script>
 </html>

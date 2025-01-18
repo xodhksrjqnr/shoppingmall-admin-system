@@ -4,6 +4,7 @@ const inputJson = {
             title : '기초상품명',
             tag : 'input',
             attributes : {
+                id : 'name',
                 name : 'name'
             }
         },
@@ -11,13 +12,15 @@ const inputJson = {
             title : '기초상품명(영문)',
             tag : 'input',
             attributes : {
+                id : 'nameEng',
                 name : 'nameEng'
             }
         },
         {
             title : '기초상품코드',
-            tag : 'input',
+            tag : 'select',
             attributes : {
+                id : 'code',
                 name : 'code'
             }
         },
@@ -25,6 +28,7 @@ const inputJson = {
             title : '판매가',
             tag : 'input',
             attributes : {
+                id : 'sellingPrice',
                 name : 'sellingPrice'
             }
         },
@@ -32,6 +36,7 @@ const inputJson = {
             title : '원가',
             tag : 'input',
             attributes : {
+                id : 'costPrice',
                 name : 'costPrice'
             }
         },
@@ -39,6 +44,7 @@ const inputJson = {
             title : '재고',
             tag : 'input',
             attributes : {
+                id : 'stock',
                 name : 'stock'
             }
         },
@@ -46,6 +52,7 @@ const inputJson = {
             title : '브랜드',
             tag : 'input',
             attributes : {
+                id : 'brand',
                 name : 'brand'
             }
         },
@@ -53,6 +60,7 @@ const inputJson = {
             title : '원산지',
             tag : 'input',
             attributes : {
+                id : 'placeOfOrigin',
                 name : 'placeOfOrigin'
             }
         },
@@ -62,10 +70,8 @@ const inputJson = {
 const listJson = {
     objects : [
         {
-            title : '기초상품명(한글/영문)',
+            title : '상품명(한글/영문)',
             tag : 'input',
-            elements : [],
-            values : [],
             attributes : {
                 name : 'name'
             }
@@ -73,35 +79,25 @@ const listJson = {
         {
             title : '기초상품코드',
             tag : 'input',
-            elements : [],
-            values : [],
             attributes : {
                 name : 'code'
             }
         },
         {
-            title : '기초상품 브랜드',
+            title : '브랜드',
             tag : 'select',
-            elements : ['', 'brand1','brand2','brand3','brand4','brand5'],
+            elements : [
+                {tag : 'option', text : '', attributes : {value : ''}},
+                {tag : 'option', text : 'brand1', attributes : {value : 'brand1'}},
+                {tag : 'option', text : 'brand2', attributes : {value : 'brand2'}},
+                {tag : 'option', text : 'brand3', attributes : {value : 'brand3'}},
+                {tag : 'option', text : 'brand4', attributes : {value : 'brand4'}},
+                {tag : 'option', text : 'brand5', attributes : {value : 'brand5'}}
+            ],
             attributes : {
                 name : 'brand',
             }
-        },
-        // {
-        //     tag : 'select',
-        //     elements : ['option1','option2','option3','option4','option5'],
-        //     attributes : {
-        //         name : 'test3'
-        //     }
-        // },
-        // {
-        //     tag : 'radio',
-        //     elements : ['radio1','radio2','radio3','radio4','radio5'],
-        //     attributes : {
-        //         name : 'test4',
-        //         type : 'radio'
-        //     }
-        // }
+        }
     ]
 };
 

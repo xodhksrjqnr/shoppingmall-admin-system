@@ -1,5 +1,12 @@
 /* input.html */
-article > div { display: inline-block; width: 19%; border: 1px solid gray; vertical-align: top; }
-article > div > ul > li.selected { background-color: gray; }
-article > div > button { display: none; }
-article > div > button.selected { display: block; }
+article:last-child { display: flex; justify-content: space-between; }
+article > form { color: var(--color-primary-r); background-color: var(--color-primary); padding: 1%; }
+article > form > button { float: right; }
+article > div { width: 19%; }
+article > div > h4 { color: var(--color-primary-r); background-color: var(--color-primary); margin: 0; }
+article > div > h4 > button { display: none; float: right; }
+article > div > h4 > button.active { display: inline-block; }
+article > div > ul { padding-left: 0; border: 1px solid gray; margin-top: 0; }
+article > div > ul > li { display: none; list-style-type: none; }
+article > div > ul > li.selected { color: var(--color-primary-r); background-color: var(--color-primary); }
+article > div > ul > li.active { display: list-item; }

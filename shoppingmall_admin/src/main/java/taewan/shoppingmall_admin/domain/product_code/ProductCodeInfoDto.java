@@ -9,6 +9,7 @@ public class ProductCodeInfoDto {
 
     private int id;
     private int parentId;
+    private String code;
     private String name;
     private Character groupIndex;
 

@@ -8,6 +8,7 @@ import lombok.Getter;
 public class RequestAddProductCodeDto {
 
     private int parentId;
+    private String code;
     private String name;
     private Character groupIndex;
 

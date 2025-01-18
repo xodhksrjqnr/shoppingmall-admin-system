@@ -16,16 +16,20 @@ public class ProductCode {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int parentId;
+    private String code;
     private String name;
     private Character groupIndex;
+    private Character assigned;
     @CreatedDate
     private LocalDateTime createDate;
 
-    public static ProductCode create(int parentId, String name, Character groupIndex) {
+    public static ProductCode create(int parentId, String code, String name, Character groupIndex) {
         return ProductCode.builder()
                 .parentId(parentId)
+                .code(code.toUpperCase())
                 .name(name)
                 .groupIndex(groupIndex)
+                .assigned(groupIndex.equals('E') ? 'n' : 'y')
                 .build();
     }
 

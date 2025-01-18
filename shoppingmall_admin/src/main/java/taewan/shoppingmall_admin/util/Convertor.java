@@ -19,6 +19,7 @@ public class Convertor {
     public static ProductCodeInfoDto toProductElementInfoDto(ProductCode entity) {
         return ProductCodeInfoDto.builder()
                 .id(entity.getId())
+                .code(entity.getCode())
                 .name(entity.getName())
                 .parentId(entity.getParentId())
                 .groupIndex(entity.getGroupIndex())
@@ -26,7 +27,7 @@ public class Convertor {
     }
 
     public static ProductCode toEntity(RequestAddProductCodeDto dto) {
-        return ProductCode.create(dto.getParentId(), dto.getName(), dto.getGroupIndex());
+        return ProductCode.create(dto.getParentId(), dto.getCode(), dto.getName(), dto.getGroupIndex());
     }
 
     public static Product toEntity(RequestAddProductDto dto) {

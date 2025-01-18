@@ -6,6 +6,8 @@ import taewan.shoppingmall_admin.domain.product_code.ProductCodeService;
 import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
 import taewan.shoppingmall_admin.domain.product_code.ResponseProductCodes;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/product-codes")
@@ -13,9 +15,14 @@ public class ProductCodeApiController {
 
     private final ProductCodeService productService;
 
-    @GetMapping("/all")
-    public ResponseProductCodes allGroupOfProductCodes() {
+    @GetMapping
+    public ResponseProductCodes allProductCodes() {
         return new ResponseProductCodes(productService.searchAll());
+    }
+
+    @GetMapping("/unassigned")
+    public List<String> allUnassignedProductCodes() {
+        return productService.searchUnassignedAll();
     }
 
     @GetMapping("/sub")

@@ -10,20 +10,9 @@ import java.util.Map;
 @Getter
 public class ResponseProductCodes {
 
-    private Map<Character, List<ProductCodeInfoDto>> groupList;
+    private List<ProductCodeInfoDto> groupList;
 
-    public ResponseProductCodes(Map<Character, List<ProductCodeInfoDto>> groupList) {
+    public ResponseProductCodes(List<ProductCodeInfoDto> groupList) {
         this.groupList = groupList;
-    }
-
-    public ResponseProductCodes(List<ProductCodeInfoDto> theGroup) {
-        if (theGroup.isEmpty()) {
-            groupList = new HashMap<>();
-            return;
-        }
-
-        this.groupList = new HashMap<>(
-                Map.of(theGroup.get(0).getGroupIndex(), theGroup)
-        );
     }
 }

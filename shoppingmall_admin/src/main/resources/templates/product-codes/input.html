@@ -5,116 +5,117 @@
         <div th:replace="~{/layout/header :: header}"></div>
         <div th:replace="~{/layout/menu :: menu}"></div>
         <section>
+            <h1>기초상품코드</h1>
             <article>
-                <div>
-                    <ul id="element_A"></ul>
-                    <button class="selected" id="button_A" type="button" value="0">+</button>
-                </div>
-                <div>
-                    <ul id="element_B"></ul>
-                    <button id="button_B" type="button" value="">+</button>
-                </div>
-                <div>
-                    <ul id="element_C"></ul>
-                    <button id="button_C" type="button" value="">+</button>
-                </div>
-                <div>
-                    <ul id="element_D"></ul>
-                    <button id="button_D" type="button" value="">+</button>
-                </div>
-                <div>
-                    <ul id="element_E"></ul>
-                    <button id="button_E" type="button" value="">+</button>
-                </div>
+                <form id="form" action="/api/product-codes">
+                    <label for="group-index">Group : </label>
+                    <input id="group-index" name="groupIndex" value="" readonly>
+                    <label for="code">Code : </label>
+                    <input id="code" name="code" value="">
+                    <label for="name">Name : </label>
+                    <input id="name" name="name" value="">
+                    <input id="parent-id" name="parentId" value="" readonly hidden>
+                    <button id="form-button" type="button">등록하기</button>
+                </form>
             </article>
             <article>
-                <form id="form">
-                    <label for="group_index">Group</label>
-                    <input id="group_index" name="groupIndex" value="">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" value="">
-                    <label for="parent_id">Parent</label>
-                    <input id="parent_id" name="parentId" value="">
-                    <button type="button">등록하기</button>
-                </form>
+                <div>
+                    <h4>상위 카테고리<button class="active" id="button-A" type="button" value="0">+</button></h4>
+                    <ul id="element-A"></ul>
+                </div>
+                <div>
+                    <h4>하위 카테고리<button id="button-B" type="button" value="">+</button></h4>
+                    <ul id="element-B"></ul>
+                </div>
+                <div>
+                    <h4>상세 카테고리<button id="button-C" type="button" value="">+</button></h4>
+                    <ul id="element-C"></ul>
+                </div>
+                <div>
+                    <h4>생성 번호<button id="button-D" type="button" value="">+</button></h4>
+                    <ul id="element-D"></ul>
+                </div>
+                <div>
+                    <h4>상태 번호<button id="button-E" type="button" value="">+</button></h4>
+                    <ul id="element-E"></ul>
+                </div>
             </article>
         </section>
         <div th:replace="~{/layout/footer :: footer}"></div>
     </body>
     <script src="/static/js/product-codes/json.js"></script>
     <script>
-        const url = "/api/product-codes/sub?parentId=";
         const groupIndexArray = ['A', 'B', 'C', 'D', 'E', 'F'];
         let selectedGroupIndex = 'A';
 
-        Load.getJsonData(url + '0', appendChildElementById);
+        Data.getJson('/api/product-codes', (data) => {
+            for (const element of data.groupList) {
+                let json = {
+                    tag : 'li',
+                    text : element.code + (element.name === '' ? '' : ' (' + element.name + ')'),
+                    attributes : {
+                        id : 'element-id_' + element.id,
+                        name : 'parent-id_' + element.parentId,
+                        class : (element.groupIndex === 'A') ? 'active' : ''
+                    }
+                };
 
-        EventListener.addListeners('article > div > ul', function (evt) {
-            let target = evt.target;
-
-            resetSubData(target.parentElement.id.split('_')[1], target.id);
-            Load.getJsonData(url + target.id, appendChildElementById);
-            clearSelect(target.parentElement.id);
-            Element.addClass(target, 'selected');
-        });
-
-        EventListener.addListeners('article > div > button', function (evt) {
-            let target = evt.target;
-
-            Element.setValueById('group_index', target.id.split('_')[1]);
-            Element.setValueById('parent_id', target.value);
-        });
-
-        EventListener.addTheListener('form > button', function (evt) {
-            let form = evt.target.parentElement;
-
-            fetch('/api/products-codes', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    groupIndex: form.groupIndex.value,
-                    name: form.name.value,
-                    parentId: form.parentId.value
-                })});
-        });
-
-        function appendChildElementById(productElements) {
-            const elements = productElements['groupList'][selectedGroupIndex];
-
-            if (isNotEmpty(elements)) {
-                const parentElement = Element.getById('element_' + elements[0]['groupIndex']);
-
-                elements.forEach(elem => {
-                    parentElement.innerHTML += '<li class="no-style" id="' + elem.id + '">' + elem.name + '</li>';
-                });
+                document.getElementById('element-' + element.groupIndex).append(
+                    ElementTW.create(json).toElement()
+                );
             }
 
-            if (selectedGroupIndex !== 'F') {
-                Element.addClassById('button_' + selectedGroupIndex, 'selected');
+            document.querySelectorAll('article > div > ul > li')
+                .forEach(li => li.addEventListener('click', (evt) => {
+                    resetSelected(evt.target.parentElement, evt.target);
+                    resetSubData(evt.target.parentElement.id.split('-')[1], evt.target.id.split('_')[1]);
+                }));
+        });
+
+        function resetSelected(elementGroup, element) {
+            for (const element of elementGroup.children) {
+                element.classList.remove('selected');
             }
+            element.classList.add('selected');
         }
 
-        function resetSubData(groupIndex, parentId) {
+        function resetSubData(groupIndex, elementId) {
             let needClear = false;
 
             for (let i = 0; i < groupIndexArray.length - 1; i++) {
                 if (needClear) {
-                    Element.clearTextContentById('element_' + groupIndexArray[i]);
-                    Element.removeClassById('button_' + groupIndexArray[i], 'selected');
-                    Element.setValueById('button_' + groupIndexArray[i], parentId);
-                    parentId = '';
+                    for (const child of document.getElementById('element-' + groupIndexArray[i]).children) {
+                        child.setAttribute('class', '');
+                    }
+                    ElementTW.get('button-' + groupIndexArray[i]).removeAttributes({class : 'active'});
                 }
-
-                needClear = (groupIndex === groupIndexArray[i]) || needClear;
-
                 if (groupIndexArray[i] === groupIndex) {
+                    needClear = true;
                     selectedGroupIndex = groupIndexArray[i + 1];
                 }
             }
+
+            ElementTW.get('button-' + selectedGroupIndex).setAttributes({ class : 'active', value : elementId });
+            document.querySelectorAll("li[name='parent-id_" + elementId + "']").forEach(li => li.setAttribute('class', 'active'));
         }
 
-        function clearSelect(group) {
-            Array.from(Element.getById(group).children).forEach(li => Element.removeClass(li, 'selected'));
-        }
+        document.querySelectorAll('article > div > h4 > button').forEach(ul => ul.addEventListener('click', (evt) => {
+            ElementTW.get('group-index').setAttributes({ value : evt.target.id.split('-')[1] });
+            ElementTW.get('parent-id').setAttributes({ value : evt.target.value });
+        }));
+
+
+        document.getElementById('form-button').addEventListener('click', (evt) => {
+            Data.postJson(
+                this.form,
+                {
+                    groupIndex: this.form.groupIndex.value,
+                    code: this.form.code.value,
+                    name: this.form.name.value,
+                    parentId: this.form.parentId.value
+                },
+                () => location.reload()
+            );
+        });
     </script>
 </html>

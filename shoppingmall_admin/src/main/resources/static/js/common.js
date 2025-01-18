@@ -37,65 +37,14 @@ class LinkInfo {
     }
 }
 
-class Load {
-
-    static loadFile(title) {
-        const paths = loadPath.get(title);
-        let main = Element.getFirst('main');
-
-        main.innerHTML = '';
-        fetch('page/' + paths[0] + '/' + paths[1])
-            .then(res => res.text())
-            .then(data => {
-                this.#load(paths[0], paths[3], 'css');
-                main.loadAndChangeHtml()
-                main.innerHTML = data;
-                this.#load(paths[0], paths[2], 'js');
-            });
-    }
-
-    static #load(targetPath, fileName, fileExtension) {
-        const path = '/static/' + fileExtension + '/' + targetPath + '/' + fileName;
-        let elem = this.#findElem(path, LinkInfo.getTagName(fileExtension));
-
-        if (isEmpty(elem)) {
-            elem = (fileExtension === 'js' ? Element.createScript(path) : Element.createLink('stylesheet', path));
-            Element.getFirst(LinkInfo.getImportLocation(fileExtension)).appendChild(elem);
-        }
-
-        if (fileExtension === 'js') {
-
-        }
-    }
-
-    static #findElem(targetPath, type) {
-        let attribute = (type === 'script' ? 'src' : 'href');
-        let findElem;
-
-        Element.getAll(type).forEach(elem => {
-            if (elem.getAttribute(attribute) === targetPath) {
-                findElem = elem;
-            };
-        });
-
-        return findElem;
-    }
-
-    static getJsonData(url, func) {
-        fetch(url)
-            .then(rep => rep.json())
-            .then(data => func(data));
-    }
-}
-
 class EventListener {
 
     static addTheListener(target, func) {
-        Element.getFirst(target).addEventListener('click', (evt) => func(evt));
+        // Element.getFirst(target).addEventListener('click', (evt) => func(evt));
     }
 
     static addListeners(target, func) {
-        Element.getAll(target).forEach(elem => elem.addEventListener('click', (evt) => func(evt)));
+        // Element.getAll(target).forEach(elem => elem.addEventListener('click', (evt) => func(evt)));
     }
 }
 
@@ -126,36 +75,20 @@ class Form {
      * ]
      */
     addTableForm(json) {
-        const table = Element.create('table');
+        const table = ElementTW.create({tag:'table'});
 
         json.objects.forEach(elem => {
-            const tr = Element.create('tr');
-            const td = Element.create('td');
-            const th = Element.create('th');
+            const tr = ElementTW.create({tag:'tr'});
+            const td = ElementTW.create({tag:'td'});
+            const th = ElementTW.create({tag:'th', text:elem.title});
 
-            th.innerText = elem.title;
-            switch (elem.tag) {
-                case 'checkbox':
-                    td.appendChild(Element.createTypeInput(elem.attributes, elem.elements));
-                    break;
-                case 'radio':
-                    td.appendChild(Element.createTypeInput(elem.attributes, elem.elements));
-                    break;
-                case 'input':
-                    td.appendChild(Element.createInput(elem.attributes));
-                    break;
-                case 'select':
-                    td.appendChild(Element.createSelect(elem.attributes, elem.elements));
-                    break;
-                default:
-                    break;
-            }
-            tr.appendChild(th);
-            tr.appendChild(td);
-            table.appendChild(tr);
+            td.append(ElementTW.create(elem).toElement());
+            tr.append(th.toElement());
+            tr.append(td.toElement());
+            table.append(tr.toElement());
         })
 
-        this.form.prepend(table);
+        this.form.prepend(table.toElement());
     }
 
     getQueryParameters() {
@@ -191,14 +124,14 @@ class Data {
             .catch(err => alert('데이터 조회에 실패하였습니다.'))
     }
 
-    static async postJson(form, object) {
+    static async postJson(form, object, func) {
         await fetch(form.action, {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(object)
         })
-            .then(rep => {  })
-            .catch(err => { alert('데이터 등록에 실패하였습니다.') })
+            .then(rep => func())
+            .catch(err => {console.log(err); alert('데이터 등록에 실패하였습니다.')})
     }
 
 }
@@ -214,7 +147,6 @@ class TUI {
             columns: columns,
             data: []
         });
-
         tui.Grid.applyTheme('striped');
     }
 
