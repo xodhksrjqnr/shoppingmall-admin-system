@@ -5,13 +5,18 @@
         <div th:replace="~{/layout/header :: header}"></div>
         <div th:replace="~{/layout/menu :: menu}"></div>
         <section>
+            <h3>참고사항</h3>
+            <ul class="guide-ul">
+                <li>Code는 필수입력 사항입니다. 입력하지 않은 경우 등록되지 않습니다.</li>
+                <li>Name은 선택입력 사항입니다. 입력한 경우 '코드 (Name)'와 같은 형태로 표시됩니다.</li>
+            </ul>
             <h1>기초상품코드</h1>
             <article>
                 <form id="form" action="/api/product-codes">
                     <label for="group-index">Group : </label>
                     <input id="group-index" name="groupIndex" value="" readonly>
                     <label for="code">Code : </label>
-                    <input id="code" name="code" value="">
+                    <input id="code" name="code" value="" required>
                     <label for="name">Name : </label>
                     <input id="name" name="name" value="">
                     <input id="parent-id" name="parentId" value="" readonly hidden>

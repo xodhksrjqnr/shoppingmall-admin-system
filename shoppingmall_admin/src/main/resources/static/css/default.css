@@ -80,3 +80,5 @@ button {
     list-style-type: none;
 }
 
+.guide-ul > li { color: red; }
+
