@@ -21,3 +21,7 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
     static-path-pattern: /static/**
+
+image:
+  storage:
+    path: /Users/taewan/Desktop/my/project/shoppingmall-system/shoppingmall-admin-system-data

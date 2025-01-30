@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: shoppingmall_admin
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shopping_mall?serverTimezone=Asia/Seoul&useUnicode=true&character_set_server=utf8mb4
+    username: test_admin
+    password: Testadmin1234@5678
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    static-path-pattern: /static/**
+
+image:
+  storage:
+    path: /app/data
