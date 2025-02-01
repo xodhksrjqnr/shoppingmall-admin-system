@@ -64,6 +64,17 @@ const inputJson = {
                 name : 'placeOfOrigin'
             }
         },
+        {
+            title : '상품 이미지',
+            tag : 'input',
+            attributes : {
+                type : 'file',
+                id : 'images',
+                name : 'images',
+                accept : 'image/*',
+                multiple : ''
+            }
+        },
     ]
 };
 

@@ -19,14 +19,6 @@
 
     Data.getJson("/api/product-codes/unassigned", initData);
     form2.addTableForm(inputJson);
-    // EventListener.addTheListener('#form-button', submit);
-
-    // function submit() {
-    //   if (form.submitInJson()) {
-    //     alert('새로운 기초상품 등록이 완료되었습니다.');
-    //     redirect('/page/products/list');
-    //   }
-    // }
 
     function initData(data) {
       const target = document.getElementById('code');
@@ -34,20 +26,43 @@
     }
 
     document.getElementById('form-button').addEventListener('click', (evt) => {
-      Data.postJson(
-        this.form,
-        {
-          name: this.form.name.value,
-          nameEng: this.form.nameEng.value,
-          code: this.form.code.value,
-          sellingPrice: this.form.sellingPrice.value,
-          costPrice: this.form.costPrice.value,
-          stock: this.form.stock.value,
-          brand: this.form.brand.value,
-          placeOfOrigin: this.form.placeOfOrigin.value
-        },
-        () => location.reload()
-      );
+      const base64Images = [];
+      const extensions = [];
+      const imageFiles = this.form.images.files;
+
+      const readImageFiles = async () => {
+        for (const imageFile of imageFiles) {
+          const reader = new FileReader();
+          const base64data = await new Promise((resolve) => {
+            reader.onloadend = function() {
+              const base64data = reader.result.split(',')[1];
+              resolve(base64data);
+            };
+            reader.readAsDataURL(imageFile);
+          });
+          base64Images.push(base64data);
+          extensions.push(imageFile.name.split('.')[1]);
+        }
+
+        Data.postJson(
+          this.form,
+          {
+            name: this.form.name.value,
+            nameEng: this.form.nameEng.value,
+            code: this.form.code.value,
+            sellingPrice: this.form.sellingPrice.value,
+            costPrice: this.form.costPrice.value,
+            stock: this.form.stock.value,
+            brand: this.form.brand.value,
+            placeOfOrigin: this.form.placeOfOrigin.value,
+            base64ImageList: base64Images,
+            extensionList: extensions
+          },
+          () => location.href = '/page/products/list'
+        );
+      };
+
+      readImageFiles();
     });
   </script>
 </html>

@@ -1,9 +1,11 @@
 package taewan.shoppingmall_admin.domain.product;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import taewan.shoppingmall_admin.util.Convertor;
+import taewan.shoppingmall_admin.util.FileManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +15,10 @@ import java.util.stream.Collectors;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
+    @Value("${image.storage.path}")
+    private String pathOfSavingImage;
     private final ProductRepository productRepository;
+    private final ProductImageRepository productImageRepository;
 
     @Override
     public List<ProductInfoDto> searchAllWithFilter(RequestSearchProductDto dto) {
@@ -24,7 +29,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addOne(RequestAddProductDto dto) {
-        productRepository.save(Convertor.toEntity(dto));
+        int productId = productRepository.save(Convertor.toEntity(dto)).getId();
+
+        productImageRepository.saveAll(
+                FileManager.saveFiles(dto.getConvertedImages(), dto.getExtensionList(), pathOfSavingImage + "/product")
+                        .stream().map(name -> ProductImage.create(name, productId))
+                        .toList()
+        );
     }
 
 }
