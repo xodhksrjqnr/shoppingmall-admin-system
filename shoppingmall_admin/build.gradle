@@ -80,6 +80,10 @@ tasks.withType(Jar) {
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-parameters"  // -parameters 옵션 추가
+}
+
 clean.doLast {
 	file(querydslDir).deleteDir()
 }
