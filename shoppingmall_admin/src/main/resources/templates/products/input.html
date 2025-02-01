@@ -5,6 +5,10 @@
     <div th:replace="~{/layout/header :: header}"></div>
     <div th:replace="~{/layout/menu :: menu}"></div>
     <section>
+      <h3>참고사항</h3>
+      <ul class="guide-ul">
+        <li>모든 정보를 입력해야 등록이 가능합니다.</li>
+      </ul>
       <form id="form" method="post" action="/api/products"></form>
       <div class="button-group">
         <button id="form-button" type="submit" class="button-insert">등록하기</button>

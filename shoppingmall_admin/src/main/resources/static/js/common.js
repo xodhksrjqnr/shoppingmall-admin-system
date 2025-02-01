@@ -125,15 +125,28 @@ class Data {
     }
 
     static async postJson(form, object, func) {
-        await fetch(form.action, {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(object)
-        })
-            .then(rep => func())
-            .catch(err => {console.log(err); alert('데이터 등록에 실패하였습니다.')})
+        if (this.completeRequired(object)) {
+            await fetch(form.action, {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(object)
+            })
+                .then(rep => func())
+                .catch(err => {console.log(err); alert('데이터 등록에 실패하였습니다.')})
+        }
     }
 
+    static completeRequired(object) {
+        for (const key in object) {
+            const target = document.getElementById(key);
+
+            if (isNotEmpty(target) && target.getAttribute('required') === '' && isEmpty(object[key])) {
+                target.focus();
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 class TUI {

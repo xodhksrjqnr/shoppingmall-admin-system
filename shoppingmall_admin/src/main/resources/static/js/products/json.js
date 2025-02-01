@@ -5,7 +5,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'name',
-                name : 'name'
+                name : 'name',
+                required : ''
             }
         },
         {
@@ -13,7 +14,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'nameEng',
-                name : 'nameEng'
+                name : 'nameEng',
+                required : ''
             }
         },
         {
@@ -21,7 +23,8 @@ const inputJson = {
             tag : 'select',
             attributes : {
                 id : 'code',
-                name : 'code'
+                name : 'code',
+                required : ''
             }
         },
         {
@@ -29,7 +32,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'sellingPrice',
-                name : 'sellingPrice'
+                name : 'sellingPrice',
+                required : ''
             }
         },
         {
@@ -37,7 +41,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'costPrice',
-                name : 'costPrice'
+                name : 'costPrice',
+                required : ''
             }
         },
         {
@@ -45,7 +50,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'stock',
-                name : 'stock'
+                name : 'stock',
+                required : ''
             }
         },
         {
@@ -53,7 +59,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'brand',
-                name : 'brand'
+                name : 'brand',
+                required : ''
             }
         },
         {
@@ -61,7 +68,8 @@ const inputJson = {
             tag : 'input',
             attributes : {
                 id : 'placeOfOrigin',
-                name : 'placeOfOrigin'
+                name : 'placeOfOrigin',
+                required : ''
             }
         },
         {
@@ -72,7 +80,8 @@ const inputJson = {
                 id : 'images',
                 name : 'images',
                 accept : 'image/*',
-                multiple : ''
+                multiple : '',
+                required : ''
             }
         },
     ]
