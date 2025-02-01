@@ -3,8 +3,8 @@ package taewan.shoppingmall_admin.api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import taewan.shoppingmall_admin.domain.product_code.ProductCodeService;
-import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
-import taewan.shoppingmall_admin.domain.product_code.ResponseProductCodes;
+import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.domain.product_code.dto.ResponseProductCodes;
 
 import java.util.List;
 

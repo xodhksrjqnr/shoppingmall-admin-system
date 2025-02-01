@@ -1,6 +1,7 @@
-package taewan.shoppingmall_admin.domain.product;
+package taewan.shoppingmall_admin.domain.product.dto;
 
 import lombok.Getter;
+import taewan.shoppingmall_admin.domain.product.Product;
 
 import java.time.LocalDateTime;
 

@@ -1,5 +1,8 @@
 package taewan.shoppingmall_admin.domain.product_code;
 
+import taewan.shoppingmall_admin.domain.product_code.dto.ProductCodeInfoDto;
+import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
+
 import java.util.List;
 
 public interface ProductCodeService {

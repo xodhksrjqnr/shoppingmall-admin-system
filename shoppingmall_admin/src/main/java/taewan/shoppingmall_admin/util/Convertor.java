@@ -1,11 +1,12 @@
 package taewan.shoppingmall_admin.util;
 
-import taewan.shoppingmall_admin.domain.menu.CategoryDto;
+import taewan.shoppingmall_admin.domain.menu.dto.CategoryDto;
 import taewan.shoppingmall_admin.domain.menu.Menu;
 import taewan.shoppingmall_admin.domain.product.*;
+import taewan.shoppingmall_admin.domain.product.dto.RequestAddProductDto;
 import taewan.shoppingmall_admin.domain.product_code.ProductCode;
-import taewan.shoppingmall_admin.domain.product_code.ProductCodeInfoDto;
-import taewan.shoppingmall_admin.domain.product_code.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.domain.product_code.dto.ProductCodeInfoDto;
+import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
 
 public class Convertor {
 

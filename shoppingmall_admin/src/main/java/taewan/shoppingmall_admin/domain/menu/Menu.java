@@ -3,6 +3,8 @@ package taewan.shoppingmall_admin.domain.menu;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+import taewan.shoppingmall_admin.domain.menu.dto.RequestMenuAddDto;
+import taewan.shoppingmall_admin.domain.menu.dto.RequestMenuModifyDto;
 
 @Getter
 @NoArgsConstructor

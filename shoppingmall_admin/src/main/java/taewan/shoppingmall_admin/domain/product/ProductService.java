@@ -1,7 +1,10 @@
 package taewan.shoppingmall_admin.domain.product;
 
+import taewan.shoppingmall_admin.domain.product.dto.ProductInfoDto;
+import taewan.shoppingmall_admin.domain.product.dto.RequestAddProductDto;
+import taewan.shoppingmall_admin.domain.product.dto.RequestSearchProductDto;
+
 import java.util.List;
-import java.util.Map;
 
 public interface ProductService {
 
