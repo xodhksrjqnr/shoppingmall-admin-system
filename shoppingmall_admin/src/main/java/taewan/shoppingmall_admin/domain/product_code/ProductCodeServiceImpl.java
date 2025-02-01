@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import taewan.shoppingmall_admin.domain.product_code.dto.ProductCodeInfoDto;
 import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.domain.product_code.dto.ResponseUnassignedProductCode;
 import taewan.shoppingmall_admin.util.Convertor;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ProductCodeServiceImpl implements ProductCodeService {
                 .toList();
     }
 
-    public List<String> searchUnassignedAll() {
+    public List<ResponseUnassignedProductCode> searchUnassignedAll() {
         return productElementRepository.findUnassignedProductCodes();
     }
 

@@ -35,4 +35,8 @@ public class ProductCode {
                 .build();
     }
 
+    public void assigned() {
+        this.assigned = 'y';
+    }
+
 }

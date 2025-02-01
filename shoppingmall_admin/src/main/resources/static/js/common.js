@@ -78,7 +78,7 @@ class Form {
         const table = ElementTW.create({tag:'table'});
 
         json.objects.forEach(elem => {
-            const tr = ElementTW.create({tag:'tr'});
+            const tr = ElementTW.create({tag:'tr', attributes: (elem.attributes.hidden === '' ? {hidden: ''} : {})});
             const td = ElementTW.create({tag:'td'});
             const th = ElementTW.create({tag:'th', text:elem.title});
 

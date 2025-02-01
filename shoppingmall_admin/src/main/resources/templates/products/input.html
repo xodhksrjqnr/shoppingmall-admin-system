@@ -25,9 +25,18 @@
     form2.addTableForm(inputJson);
 
     function initData(data) {
-      const target = document.getElementById('code');
-      data.forEach(d => target.append(ElementTW.create({tag:'option', text:d, attributes: {value: d}}).toElement()));
+      const target1 = document.getElementById('code');
+      const target2 = document.getElementById('codeId');
+
+      data.forEach(d => {
+        target1.append(ElementTW.create({tag:'option', text:d.code, attributes: {value: d.code}}).toElement())
+        target2.append(ElementTW.create({tag:'option', text:d.id, attributes: {value: d.id}}).toElement())
+      });
     }
+
+    document.getElementById('code').addEventListener('change', (evt) => {
+      document.getElementById('codeId').selectedIndex = evt.target.selectedIndex
+    });
 
     document.getElementById('form-button').addEventListener('click', (evt) => {
       const base64Images = [];
@@ -54,6 +63,7 @@
             name: this.form.name.value,
             nameEng: this.form.nameEng.value,
             code: this.form.code.value,
+            codeId: this.form.codeId.value,
             sellingPrice: this.form.sellingPrice.value,
             costPrice: this.form.costPrice.value,
             stock: this.form.stock.value,

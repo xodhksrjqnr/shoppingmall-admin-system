@@ -28,6 +28,16 @@ const inputJson = {
             }
         },
         {
+            title : '기초상품코드id',
+            tag : 'select',
+            attributes : {
+                id : 'codeId',
+                name : 'codeId',
+                required : '',
+                hidden : ''
+            }
+        },
+        {
             title : '판매가',
             tag : 'input',
             attributes : {

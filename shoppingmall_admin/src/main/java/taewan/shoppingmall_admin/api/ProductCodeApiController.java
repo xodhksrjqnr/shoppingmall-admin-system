@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import taewan.shoppingmall_admin.domain.product_code.ProductCodeService;
 import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
 import taewan.shoppingmall_admin.domain.product_code.dto.ResponseProductCodes;
+import taewan.shoppingmall_admin.domain.product_code.dto.ResponseUnassignedProductCode;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ProductCodeApiController {
     }
 
     @GetMapping("/unassigned")
-    public List<String> allUnassignedProductCodes() {
+    public List<ResponseUnassignedProductCode> allUnassignedProductCodes() {
         return productService.searchUnassignedAll();
     }
 
