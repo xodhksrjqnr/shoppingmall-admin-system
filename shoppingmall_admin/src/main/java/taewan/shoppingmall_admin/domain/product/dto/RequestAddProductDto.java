@@ -13,6 +13,7 @@ public class RequestAddProductDto {
     private String name;
     private String nameEng;
     private String code;
+    private Integer codeId;
     private String sellingPrice;
     private String costPrice;
     private Integer stock;
