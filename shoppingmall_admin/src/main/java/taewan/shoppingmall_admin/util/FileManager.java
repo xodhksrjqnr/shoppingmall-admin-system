@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class FileManager {
 
@@ -33,7 +34,7 @@ public class FileManager {
     }
 
     public static String makeName(String prefix) {
-        return prefix + "_" + LocalDateTime.now().format( DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        return prefix + "_" + UUID.randomUUID() + "_" + LocalDateTime.now().format( DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
     }
 
 }
