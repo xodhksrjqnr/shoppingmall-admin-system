@@ -20,7 +20,7 @@ public class ProductCodeServiceImpl implements ProductCodeService {
     @Override
     public List<ProductCodeInfoDto> searchAll() {
         return productElementRepository.findAll()
-                .stream().map(Convertor::toProductElementInfoDto)
+                .stream().map(Convertor::toProductCodeInfoDto)
                 .toList();
     }
 
@@ -31,7 +31,7 @@ public class ProductCodeServiceImpl implements ProductCodeService {
     @Override
     public List<ProductCodeInfoDto> searchOneGroup(int parentId) {
         return productElementRepository.findAllByParentId(parentId)
-                .stream().map(Convertor::toProductElementInfoDto)
+                .stream().map(Convertor::toProductCodeInfoDto)
                 .toList();
     }
 

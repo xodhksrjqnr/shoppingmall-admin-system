@@ -17,7 +17,7 @@ public class Convertor {
                 .build();
     }
 
-    public static ProductCodeInfoDto toProductElementInfoDto(ProductCode entity) {
+    public static ProductCodeInfoDto toProductCodeInfoDto(ProductCode entity) {
         return ProductCodeInfoDto.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
