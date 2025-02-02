@@ -26,5 +26,11 @@
     function load() {
       Data.getJson("/api/products/all" + form.getQueryParameters(), grid.resetData);
     }
+
+    grid.getGrid().on('click', (ev) => {
+      if (ev.columnName === 'id') {
+        location.href = '/page/products/view?id=' + ev.instance.getValue(ev.rowKey, 'id');
+      }
+    });
   </script>
 </html>

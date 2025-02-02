@@ -171,4 +171,8 @@ class TUI {
         tui.Grid.applyTheme('striped');
     }
 
+    getGrid() {
+        return this.#instance;
+    }
+
 }
