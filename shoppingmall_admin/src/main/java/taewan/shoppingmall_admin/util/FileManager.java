@@ -19,7 +19,7 @@ public class FileManager {
             String saveName = makeName("product") + "." + extensions.get(i);
 
             new File(path).mkdirs();
-            save(files.get(i), path + "/" + saveName);
+            save(files.get(i), path + saveName);
             savedFileNames.add(saveName);
         }
         return savedFileNames;
@@ -34,7 +34,7 @@ public class FileManager {
     }
 
     public static String makeName(String prefix) {
-        return prefix + "_" + UUID.randomUUID() + "_" + LocalDateTime.now().format( DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+        return prefix + "-" + UUID.randomUUID() + "-" + LocalDateTime.now().format( DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
     }
 
 }

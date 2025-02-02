@@ -97,6 +97,74 @@ const inputJson = {
     ]
 };
 
+const viewJson = {
+    objects : [
+        {
+            title : '기초상품명',
+            tag : 'span',
+            attributes : {
+                id : 'name'
+            }
+        },
+        {
+            title : '기초상품명(영문)',
+            tag : 'span',
+            attributes : {
+                id : 'nameEng'
+            }
+        },
+        {
+            title : '기초상품코드',
+            tag : 'span',
+            attributes : {
+                id : 'code'
+            }
+        },
+        {
+            title : '판매가',
+            tag : 'span',
+            attributes : {
+                id : 'sellingPrice'
+            }
+        },
+        {
+            title : '원가',
+            tag : 'span',
+            attributes : {
+                id : 'costPrice'
+            }
+        },
+        {
+            title : '재고',
+            tag : 'span',
+            attributes : {
+                id : 'stock'
+            }
+        },
+        {
+            title : '브랜드',
+            tag : 'span',
+            attributes : {
+                id : 'brand'
+            }
+        },
+        {
+            title : '원산지',
+            tag : 'span',
+            attributes : {
+                id : 'placeOfOrigin'
+            }
+        },
+        {
+            title : '상품 이미지',
+            tag : 'div',
+            attributes : {
+                id : 'image'
+            }
+        },
+    ]
+};
+
 const listJson = {
     objects : [
         {

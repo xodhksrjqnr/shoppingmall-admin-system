@@ -75,20 +75,7 @@ class Form {
      * ]
      */
     addTableForm(json) {
-        const table = ElementTW.create({tag:'table'});
-
-        json.objects.forEach(elem => {
-            const tr = ElementTW.create({tag:'tr', attributes: (elem.attributes.hidden === '' ? {hidden: ''} : {})});
-            const td = ElementTW.create({tag:'td'});
-            const th = ElementTW.create({tag:'th', text:elem.title});
-
-            td.append(ElementTW.create(elem).toElement());
-            tr.append(th.toElement());
-            tr.append(td.toElement());
-            table.append(tr.toElement());
-        })
-
-        this.form.prepend(table.toElement());
+        this.form.prepend(Creator.table(json));
     }
 
     getQueryParameters() {
@@ -108,6 +95,27 @@ class Form {
         new FormData(this.form).forEach((value, key) => object[key] = value);
 
         Data.postJson(this.form, object);
+    }
+
+}
+
+class Creator {
+
+    static table(json) {
+        const table = ElementTW.create({tag:'table'});
+
+        json.objects.forEach(elem => {
+            const tr = ElementTW.create({tag:'tr', attributes: (elem.attributes.hidden === '' ? {hidden: ''} : {})});
+            const td = ElementTW.create({tag:'td'});
+            const th = ElementTW.create({tag:'th', text:elem.title});
+
+            td.append(ElementTW.create(elem).toElement());
+            tr.append(th.toElement());
+            tr.append(td.toElement());
+            table.append(tr.toElement());
+        })
+
+        return table.toElement();
     }
 
 }

@@ -22,6 +22,10 @@ spring:
       matching-strategy: ant_path_matcher
     static-path-pattern: /static/**
 
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/public/,classpath:/resources/,file:/app/data/
+
 image:
   storage:
-    path: /app/data
+    path: /app/data/

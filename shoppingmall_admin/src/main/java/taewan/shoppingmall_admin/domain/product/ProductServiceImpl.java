@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import taewan.shoppingmall_admin.domain.product.dto.ProductInfoDto;
+import taewan.shoppingmall_admin.domain.product.dto.ProductInfoWithImageDto;
 import taewan.shoppingmall_admin.domain.product.dto.RequestAddProductDto;
 import taewan.shoppingmall_admin.domain.product.dto.RequestSearchProductDto;
 import taewan.shoppingmall_admin.domain.product_code.ProductCodeRepository;
@@ -34,6 +35,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductInfoWithImageDto searchOne(int productId) {
+        return new ProductInfoWithImageDto(
+                productRepository.findById(productId)
+                        .orElseThrow(() -> new NoSuchElementException("존재하지 않는 상품입니다.")),
+                productImageRepository.findAllByProductId(productId)
+        );
+    }
+
+    @Override
     public void addOne(RequestAddProductDto dto) {
         int productId = productRepository.save(Convertor.toEntity(dto)).getId();
 
@@ -42,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
                         .assigned();
 
         productImageRepository.saveAll(
-                FileManager.saveFiles(dto.getConvertedImages(), dto.getExtensionList(), pathOfSavingImage + "/product")
+                FileManager.saveFiles(dto.getConvertedImages(), dto.getExtensionList(), pathOfSavingImage + "product/")
                         .stream().map(name -> ProductImage.create(name, productId))
                         .toList()
         );

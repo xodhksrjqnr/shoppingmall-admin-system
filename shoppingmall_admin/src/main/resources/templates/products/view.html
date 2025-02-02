@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<div th:replace="~{/layout/head :: head}"></div>
+<body>
+<div th:replace="~{/layout/header :: header}"></div>
+<div th:replace="~{/layout/menu :: menu}"></div>
+<section>
+    <article id="product"></article>
+    <div class="button-group">
+        <button type="button" class="button-back" onclick="history.back()">돌아가기</button>
+    </div>
+</section>
+<div th:replace="~{/layout/footer :: footer}"></div>
+</body>
+<script src="/static/js/products/json.js"></script>
+<script th:inline="javascript">
+    document.getElementById('product').append(Creator.table(viewJson))
+    Data.getJson("/api/products?id=" + [[${id}]], initData);
+
+    function initData(data) {
+        for (const key in data) {
+            const target = document.getElementById(key);
+
+            if (isNotEmpty(target)) {
+                target.innerText = data[key];
+            }
+
+            if (key === 'productImages') {
+                const target = document.getElementById('image');
+
+                for (const image of data[key]) {
+                    target.append(ElementTW.create({tag:'img', attributes:{src:'/image/product/' + image, alt: 'img'}}).toElement());
+                }
+            }
+        }
+    }
+
+</script>
+</html>

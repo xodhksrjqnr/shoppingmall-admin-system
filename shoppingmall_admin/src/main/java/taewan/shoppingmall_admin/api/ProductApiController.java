@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import taewan.shoppingmall_admin.domain.product.dto.ProductInfoDto;
 import taewan.shoppingmall_admin.domain.product.ProductService;
+import taewan.shoppingmall_admin.domain.product.dto.ProductInfoWithImageDto;
 import taewan.shoppingmall_admin.domain.product.dto.RequestAddProductDto;
 import taewan.shoppingmall_admin.domain.product.dto.RequestSearchProductDto;
 
@@ -16,8 +17,13 @@ public class ProductApiController {
 
     private final ProductService productService;
 
+    @GetMapping
+    public ProductInfoWithImageDto oneOfProduct(@RequestParam Integer id) {
+        return productService.searchOne(id);
+    }
+
     @GetMapping("/all")
-    public List<ProductInfoDto> allOfProducts(@ModelAttribute RequestSearchProductDto dto) {
+    public List<ProductInfoDto> allOfProduct(@ModelAttribute RequestSearchProductDto dto) {
         return productService.searchAllWithFilter(dto);
     }
 
