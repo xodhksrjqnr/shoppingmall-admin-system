@@ -132,15 +132,17 @@ class Data {
             .catch(err => alert('데이터 조회에 실패하였습니다.'))
     }
 
-    static async postJson(form, object, func) {
+    static async postJson(form, object, successFunc, failFunc) {
+        if (failFunc === null)
+            failFunc = () => alert('데이터 등록에 실패하였습니다.');
         if (this.completeRequired(object)) {
             await fetch(form.action, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(object)
             })
-                .then(rep => func())
-                .catch(err => {console.log(err); alert('데이터 등록에 실패하였습니다.')})
+                .then(rep => successFunc())
+                .catch(err => failFunc())
         }
     }
 
