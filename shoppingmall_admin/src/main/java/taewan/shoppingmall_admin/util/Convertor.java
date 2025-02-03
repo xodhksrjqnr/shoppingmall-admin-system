@@ -1,5 +1,7 @@
 package taewan.shoppingmall_admin.util;
 
+import taewan.shoppingmall_admin.domain.brand.Brand;
+import taewan.shoppingmall_admin.domain.brand.dto.RequestAddBrandDto;
 import taewan.shoppingmall_admin.domain.menu.dto.CategoryDto;
 import taewan.shoppingmall_admin.domain.menu.Menu;
 import taewan.shoppingmall_admin.domain.product.*;
@@ -42,6 +44,10 @@ public class Convertor {
                 dto.getBrand(),
                 dto.getPlaceOfOrigin()
         );
+    }
+
+    public static Brand toEntity(RequestAddBrandDto dto) {
+        return Brand.create(dto.getName(), dto.getCode());
     }
 
 }
