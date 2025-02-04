@@ -21,18 +21,23 @@
   <script>
     const form2 = new Form(document.getElementById('form'));
 
-    Data.getJson("/api/product-codes/unassigned", initData);
     form2.addTableForm(inputJson);
-
-    function initData(data) {
+    Data.getJson("/api/product-codes/unassigned", (data) => {
       const target1 = document.getElementById('code');
       const target2 = document.getElementById('codeId');
 
-      data.forEach(d => {
-        target1.append(ElementTW.create({tag:'option', text:d.code, attributes: {value: d.code}}).toElement())
-        target2.append(ElementTW.create({tag:'option', text:d.id, attributes: {value: d.id}}).toElement())
-      });
-    }
+      for (const key in data) {
+        target1.append(ElementTW.create({tag:'option', text:data[key].code, attributes: {value: data[key].code}}).toElement())
+        target2.append(ElementTW.create({tag:'option', text:data[key].id, attributes: {value: data[key].id}}).toElement())
+      }
+    });
+    Data.getJson("/api/brands/all", (data) => {
+      const target = document.getElementById('brand');
+
+      for (const key in data) {
+        target.append(ElementTW.create({tag:'option', text:data[key].name, attributes: {value: data[key].code}}).toElement());
+      }
+    });
 
     document.getElementById('code').addEventListener('change', (evt) => {
       document.getElementById('codeId').selectedIndex = evt.target.selectedIndex

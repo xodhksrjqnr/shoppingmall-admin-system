@@ -27,6 +27,19 @@
       Data.getJson("/api/products/all" + form.getQueryParameters(), grid.resetData);
     }
 
+    Data.getJson("/api/brands/all", (data) => {
+      const target = document.getElementById('brand');
+
+      for (let i = 0; i < data.length; i++) {
+        target.append(
+          ElementTW.create({tag:'div', attributes:{class:'inline-block'}})
+                  .append(ElementTW.create({tag:'input', attributes:{type:'checkbox', id:'brand' + i, name:'brand'}}).toElement())
+                  .append(ElementTW.create({tag:'label', text:data[i].name + '(' + data[i].code + ')', attributes:{for:'brand' + i}}).toElement())
+                  .toElement()
+        );
+      }
+    });
+
     grid.getGrid().on('click', (ev) => {
       location.href = '/page/products/view?id=' + ev.instance.getValue(ev.rowKey, 'id');
     });
