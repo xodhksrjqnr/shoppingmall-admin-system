@@ -2,11 +2,11 @@ package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.domain.product.dto.ProductInfoDto;
-import taewan.shoppingmall_admin.domain.product.ProductService;
-import taewan.shoppingmall_admin.domain.product.dto.ProductInfoWithImageDto;
-import taewan.shoppingmall_admin.domain.product.dto.RequestAddProductDto;
-import taewan.shoppingmall_admin.domain.product.dto.RequestSearchProductDto;
+import taewan.shoppingmall_admin.dto.product.ProductInfoDto;
+import taewan.shoppingmall_admin.service.ProductService;
+import taewan.shoppingmall_admin.dto.product.ProductInfoWithImageDto;
+import taewan.shoppingmall_admin.dto.product.RequestAddProductDto;
+import taewan.shoppingmall_admin.dto.product.RequestSearchProductDto;
 
 import java.util.List;
 

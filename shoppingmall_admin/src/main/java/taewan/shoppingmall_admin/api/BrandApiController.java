@@ -2,9 +2,9 @@ package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.domain.brand.BrandInfoDto;
-import taewan.shoppingmall_admin.domain.brand.BrandService;
-import taewan.shoppingmall_admin.domain.brand.dto.RequestAddBrandDto;
+import taewan.shoppingmall_admin.dto.brand.BrandInfoDto;
+import taewan.shoppingmall_admin.service.BrandService;
+import taewan.shoppingmall_admin.dto.brand.RequestAddBrandDto;
 
 import java.util.List;
 

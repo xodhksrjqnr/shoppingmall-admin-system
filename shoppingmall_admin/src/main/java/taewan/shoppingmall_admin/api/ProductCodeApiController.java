@@ -2,10 +2,10 @@ package taewan.shoppingmall_admin.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.domain.product_code.ProductCodeService;
-import taewan.shoppingmall_admin.domain.product_code.dto.RequestAddProductCodeDto;
-import taewan.shoppingmall_admin.domain.product_code.dto.ResponseProductCodes;
-import taewan.shoppingmall_admin.domain.product_code.dto.ResponseUnassignedProductCode;
+import taewan.shoppingmall_admin.service.ProductCodeService;
+import taewan.shoppingmall_admin.dto.product_code.RequestAddProductCodeDto;
+import taewan.shoppingmall_admin.dto.product_code.ResponseProductCodes;
+import taewan.shoppingmall_admin.dto.product_code.ResponseUnassignedProductCode;
 
 import java.util.List;
 
