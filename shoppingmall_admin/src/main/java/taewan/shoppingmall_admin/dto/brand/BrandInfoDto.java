@@ -1,7 +1,7 @@
 package taewan.shoppingmall_admin.dto.brand;
 
 import lombok.Getter;
-import taewan.shoppingmall_admin.entity.Brand;
+import taewan.shoppingmall_admin.base.entity.Brand;
 
 import java.time.LocalDateTime;
 

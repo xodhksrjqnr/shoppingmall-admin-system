@@ -35,7 +35,7 @@
       const target = document.getElementById('brand');
 
       for (const key in data) {
-        target.append(ElementTW.create({tag:'option', text:data[key].name, attributes: {value: data[key].code}}).toElement());
+        target.append(ElementTW.create({tag:'option', text:data[key].name + '(' + data[key].code + ')', attributes: {value: data[key].code}}).toElement());
       }
     });
 
