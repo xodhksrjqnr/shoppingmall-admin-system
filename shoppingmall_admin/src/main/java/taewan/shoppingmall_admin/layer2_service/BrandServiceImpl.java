@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import taewan.shoppingmall_admin.base.util.Convertor;
 import taewan.shoppingmall_admin.dto.brand.BrandInfoDto;
 import taewan.shoppingmall_admin.dto.brand.RequestAddBrandDto;
 import taewan.shoppingmall_admin.layer3_repository.jpa.BrandRepository;
-import taewan.shoppingmall_admin.base.util.Convertor;
 
 import java.util.List;
 

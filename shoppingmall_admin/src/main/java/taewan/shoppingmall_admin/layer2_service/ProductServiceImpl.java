@@ -33,8 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductInfoDto> searchAllWithFilter(RequestSearchProductDto dto) {
         return productRepository.findAllByConditions(dto.makeWhere())
-                        .stream().map(ProductInfoDto::new)
-                        .collect(Collectors.toList());
+                        .stream().map(ProductInfoDto::new).toList();
     }
 
     @Override

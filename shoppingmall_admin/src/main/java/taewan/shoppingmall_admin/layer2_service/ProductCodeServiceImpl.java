@@ -3,6 +3,7 @@ package taewan.shoppingmall_admin.layer2_service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import taewan.shoppingmall_admin.dto.AllInfoDto;
 import taewan.shoppingmall_admin.layer3_repository.jpa.ProductCodeRepository;
 import taewan.shoppingmall_admin.dto.product_code.ProductCodeInfoDto;
 import taewan.shoppingmall_admin.dto.product_code.RequestAddProductCodeDto;
@@ -17,13 +18,6 @@ import java.util.List;
 public class ProductCodeServiceImpl implements ProductCodeService {
 
     private final ProductCodeRepository productElementRepository;
-
-    @Override
-    public List<ProductCodeInfoDto> searchAll() {
-        return productElementRepository.findAll()
-                .stream().map(Convertor::toProductCodeInfoDto)
-                .toList();
-    }
 
     public List<ResponseUnassignedProductCode> searchUnassignedAll() {
         return productElementRepository.findUnassignedProductCodes();

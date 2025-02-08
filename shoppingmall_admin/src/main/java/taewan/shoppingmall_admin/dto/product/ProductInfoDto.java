@@ -2,11 +2,12 @@ package taewan.shoppingmall_admin.dto.product;
 
 import lombok.Getter;
 import taewan.shoppingmall_admin.base.entity.Product;
+import taewan.shoppingmall_admin.dto.AllInfoDto;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class ProductInfoDto {
+public class ProductInfoDto extends AllInfoDto {
 
     private final int id;
     private final String name;

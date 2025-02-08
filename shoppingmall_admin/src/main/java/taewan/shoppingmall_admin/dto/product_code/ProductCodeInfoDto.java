@@ -2,10 +2,11 @@ package taewan.shoppingmall_admin.dto.product_code;
 
 import lombok.Builder;
 import lombok.Getter;
+import taewan.shoppingmall_admin.dto.AllInfoDto;
 
 @Getter
 @Builder
-public class ProductCodeInfoDto {
+public class ProductCodeInfoDto extends AllInfoDto {
 
     private int id;
     private int parentId;
