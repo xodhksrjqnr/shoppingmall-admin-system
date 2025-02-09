@@ -2,7 +2,7 @@ package taewan.shoppingmall_admin.layer1_api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import taewan.shoppingmall_admin.dto.product.ProductInfoDto;
+import taewan.shoppingmall_admin.dto.product.ProductDto;
 import taewan.shoppingmall_admin.layer2_service.ProductService;
 import taewan.shoppingmall_admin.dto.product.ProductInfoWithImageDto;
 import taewan.shoppingmall_admin.dto.product.RequestAddProductDto;
@@ -23,7 +23,7 @@ public class ProductApiController {
     }
 
     @GetMapping("/all")
-    public List<ProductInfoDto> allOfProduct(@ModelAttribute RequestSearchProductDto dto) {
+    public List<ProductDto> allOfProduct(@ModelAttribute RequestSearchProductDto dto) {
         return productService.searchAllWithFilter(dto);
     }
 

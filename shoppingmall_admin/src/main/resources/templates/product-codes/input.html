@@ -54,7 +54,7 @@
         let selectedGroupIndex = 'A';
 
         Data.getJson('/api/product-codes', (data) => {
-            for (const element of data.groupList) {
+            for (const element of data) {
                 let json = {
                     tag : 'li',
                     text : element.code + (element.name === '' ? '' : ' (' + element.name + ')'),

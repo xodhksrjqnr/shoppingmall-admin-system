@@ -2,7 +2,6 @@ package taewan.shoppingmall_admin.dto.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
 import java.util.Base64;
 import java.util.List;
 

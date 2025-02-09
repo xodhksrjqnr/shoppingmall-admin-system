@@ -7,9 +7,9 @@ import java.util.List;
 @Getter
 public class ResponseProductCodes {
 
-    private List<ProductCodeInfoDto> groupList;
+    private List<ProductCodeDto> groupList;
 
-    public ResponseProductCodes(List<ProductCodeInfoDto> groupList) {
+    public ResponseProductCodes(List<ProductCodeDto> groupList) {
         this.groupList = groupList;
     }
 }
